@@ -109,13 +109,13 @@ def auto_extract_tar(f, upload):
 
 
 @app.route('/', methods=['POST'])
-# Zip and tar files will automatically be extracted upon upload,
-# if app.config['AUTO_EXTRACT'] is set to True.
-#
-# Tar is decrypted automatically if app.config['AUTO_DECRYPT'] is set to True.
-# If both are set to False, the zip or tar will be saved to server.
-# Creates an upload file if it doesn't exist already.
 def upload_file():
+    # Zip and tar files will automatically be extracted upon upload,
+    # if app.config['AUTO_EXTRACT'] is set to True.
+    #
+    # Tar is decrypted automatically if app.config['AUTO_DECRYPT'] is set to True.
+    # If both are set to False, the zip or tar will be saved to server.
+    # Creates an upload file if it doesn't exist already.
     try:
         for f in request.files.values():
             if request.args.get('enc', default=False, type=bool) and app.config['AUTO_DECRYPT']:
